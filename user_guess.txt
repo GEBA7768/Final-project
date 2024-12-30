@@ -1,0 +1,34 @@
+void user_guess(int Goal_Number, int* user_attempts) {
+    int num;
+    int low = 1, high = 100; // 記錄當前有效範圍
+    printf("請在1~100中選擇一個數字: ");
+
+    while (1) {
+        scanf("%d", &num);
+
+        if (num < low || num > high) {
+            printf("您所輸入的數字不在範圍內，請重新輸入！範圍是%d~%d: ", low, high);
+            continue;
+        }
+
+        (*user_attempts)++;
+
+        if (num > Goal_Number) {
+            high = num - 1; // 更新有效範圍的上界
+            printf("請在%d~%d中選擇一個數字: ", low, high);
+        }
+        else if (num < Goal_Number) {
+            low = num + 1; // 更新有效範圍的下界
+            printf("請在%d~%d中選擇一個數字: ", low, high);
+        }
+        else {
+            printf("恭喜你！你找到了目標數字：%d！\n", Goal_Number);
+            printf("你總共猜了%d次。\n", *user_attempts);
+            break;
+        }
+
+        // 確保在顯示範圍時不直接包含目標數字
+        if (low == Goal_Number) low--;
+        if (high == Goal_Number) high++;
+    }
+}
