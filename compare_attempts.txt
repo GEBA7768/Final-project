@@ -1,0 +1,15 @@
+void compare_attempts(int user_attempts, int computer_attempts) {
+    printf("\n結果比較:\n");
+    printf("你猜了%d次。\n", user_attempts);
+    printf("電腦猜了%d次。\n", computer_attempts);
+
+    if (user_attempts < computer_attempts) {
+        printf("你比電腦更快找到目標數字！\n");
+    }
+    else if (user_attempts > computer_attempts) {
+        printf("電腦比你更快找到目標數字！\n");
+    }
+    else {
+        printf("你和電腦找到目標數字的次數相同！\n");
+    }
+}
