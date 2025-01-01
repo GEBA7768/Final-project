@@ -1,0 +1,31 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+void user_guess(int Goal_Number, int* user_attempts);
+void computer_guess(int Goal_Number, int* computer_attempts);
+void compare_attempts(int user_attempts, int computer_attempts);
+
+int main() {
+    int Goal_Number, user_attempts = 0, computer_attempts = 0;
+
+    // 初始化隨機數生成器
+    srand(time(0));
+
+    // 生成一個1到100之間的隨機數
+    Goal_Number = rand() % 100 + 1;
+
+    printf("\n猜數字遊戲開始！\n");
+
+    // 玩家猜數過程
+    user_guess(Goal_Number, &user_attempts);
+
+    // 電腦使用二元搜尋法猜數過程
+    computer_guess(Goal_Number, &computer_attempts);
+
+    // 比較猜測次數
+    compare_attempts(user_attempts, computer_attempts);
+
+    return 0;
+}
+
