@@ -1,0 +1,22 @@
+void computer_guess(int Goal_Number, int* computer_attempts) {
+    int computer_low = 1, computer_high = 100, computer_guess;
+
+    printf("\n現在輪到電腦猜測目標數字！\n");
+    while (1) {
+        (*computer_attempts)++;
+        computer_guess = (computer_low + computer_high) / 2;
+        printf("電腦猜測: %d\n", computer_guess);
+
+        if (computer_guess > Goal_Number) {
+            computer_high = computer_guess - 1;
+        }
+        else if (computer_guess < Goal_Number) {
+            computer_low = computer_guess + 1;
+        }
+        else {
+            printf("電腦找到了目標數字：%d！\n", Goal_Number);
+            printf("電腦總共猜了%d次。\n", *computer_attempts);
+            break;
+        }
+    }
+}
